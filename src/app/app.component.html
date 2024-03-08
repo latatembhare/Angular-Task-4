@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6">
+      <form #myForm="ngForm" (ngSubmit)="updateChart()">
+        <div class="from-group">
+        <label for="box1">Enter First value</label>
+        <input type="number" name="firstValue" [(ngModel)]="firstValue" (blur)="updateValues($event)" [(ngModel)]="firstValue" (input)="validateValues()" />
+      </div>
+      <div class="from-group">
+        <label for="box2">Enter First value</label>
+        <input type="number" class="mr-3" name="secondValue" [(ngModel)]="secondValue" (blur)="updateValues($event)" [(ngModel)]="secondValue" (input)="validateValues()" />
+      </div>
+      <div *ngIf="showError" class="text-danger">
+        Total value cannot exceed 100
+      </div>
+        <button type="submit" class="btn btn-success">Create pie chart</button>
+      </form>
+    </div>
+    <div col-sm-6>
+      <div class="card flex justify-content-center">
+        <p-chart type="pie" [data]="data"></p-chart>
+      </div>
+    </div>
+  </div>
+</div>
