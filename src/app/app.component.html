@@ -1,19 +1,33 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-sm-6">
-      <form #myForm="ngForm" (ngSubmit)="updateChart()">
-        <div class="from-group">
-        <label for="box1">Enter First value</label>
-        <input type="number" name="firstValue" [(ngModel)]="firstValue" (blur)="updateValues($event)" [(ngModel)]="firstValue" (input)="validateValues()" />
-      </div>
-      <div class="from-group">
-        <label for="box2">Enter First value</label>
-        <input type="number" class="mr-3" name="secondValue" [(ngModel)]="secondValue" (blur)="updateValues($event)" [(ngModel)]="secondValue" (input)="validateValues()" />
-      </div>
-      <div *ngIf="showError" class="text-danger">
-        Total value cannot exceed 100
-      </div>
-        <button type="submit" class="btn btn-success">Create pie chart</button>
+    <div class="col-sm-6 ">
+      <form #myForm="ngForm" (ngSubmit)="updateChart()" >
+        <div class="from-group col-6">
+          <label for="box1">Enter First value</label>
+          <input 
+            type="number"
+            name="firstValue"
+            [(ngModel)]="firstValue"
+            (input)="validateValues()"
+            (blur)="updateValues($event)"
+           
+          />
+        </div>
+        <div class="from-group col-6 mt-2">
+          <label for="box2 ">Enter Second value</label>
+          <input
+            type="number"
+            name="secondValue"
+            [(ngModel)]="secondValue"
+            (input)="validateValues()"
+            (blur)="updateValues($event)"
+           
+          />
+        </div>
+        <div *ngIf="showError" class="text-danger">
+          Incorrect value 
+        </div>
+        <button type="submit" class="btn btn-success mt-3 ml-2 mb-2" [disabled]="showError">Create pie chart</button>
       </form>
     </div>
     <div col-sm-6>
